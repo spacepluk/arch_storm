@@ -1,4 +1,5 @@
 # Maintainer: Guillaume ALAUX <guillaume at alaux dot net>
+# Sources available at https://github.com/galaux/arch_storm
 
 # nimbus -> requires zookeeper to run
 # supervisor -> requires zookeeper to run
