@@ -10,7 +10,7 @@
 
 pkgname=storm
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Distributed and fault-tolerant realtime computation system'
 arch=('any')
 url='https://storm.apache.org/'
@@ -22,7 +22,9 @@ backup=(etc/storm/storm_env.ini
         etc/zookeeper/zookeeper-storm/log4j.properties)
 install=install_storm.sh
 
-source=(https://dist.apache.org/repos/dist/release/${pkgname}/apache-${pkgname}-${pkgver}/apache-${pkgname}-${pkgver}.tar.gz
+_apache_cgi="http://www.apache.org/dyn/closer.cgi/${pkgname}/apache-${pkgname}-${pkgver}/apache-${pkgname}-${pkgver}.tar.gz"
+_mirror_url=$(curl "${_apache_cgi}?asjson=1" | tr -d '\n ' | sed -r 's/.*"path_info":"(.+)".*"preferred":"(.+)".*/\2\1/')
+source=(${_mirror_url}
         zookeeper_zoo.cfg
         zookeeper_log4j.properties
         systemd_storm-nimbus.service
