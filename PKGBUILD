@@ -10,7 +10,7 @@
 
 pkgname=storm
 pkgver=0.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Distributed and fault-tolerant realtime computation system'
 arch=('any')
 url='https://storm.apache.org/'
@@ -80,9 +80,9 @@ package() {
     >> "${pkgdir}/etc/${pkgname}/storm.yaml"
   #TODO dev-storm-zookeeper (add this in conjunction with special storm-zookeeper.service file?)
 
-  install -D ${srcdir}/systemd_sysusers.d_storm.conf \
+  install -D -m 644 ${srcdir}/systemd_sysusers.d_storm.conf \
     "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-  install -D ${srcdir}/systemd_tmpfiles.d_storm.conf \
+  install -D -m 644 ${srcdir}/systemd_tmpfiles.d_storm.conf \
     "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
   for s in nimbus supervisor ui; do
